@@ -1,0 +1,180 @@
+<!--
+Setup notes:
+- Open with Live Server or serve from any static file server.
+- No build tools required; plain HTML/CSS/JS.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>UTM BioViz</title>
+  <!-- Google Fonts: Inter (600,700) and IBM Plex Sans (400,500) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/bioviz-logo.svg" alt="UTM BioViz logo" class="logo"/>
+        <div class="wordmark"><span class="utm">UTM</span> <span class="bioviz">BioViz</span></div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="header-cta">
+        <button class="btn primary" id="btn-contact-top">Contact Us</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <h1 class="hero-title">A Visual Literacy Library for Biology</h1>
+        <p class="hero-sub">A collection of biology figures designed to help students recognize, interpret, and use different types of visuals in biology.</p>
+
+        <form class="search-form" role="search" onsubmit="return false;">
+          <label class="visually-hidden" for="search-input">Search visuals</label>
+          <div class="search-wrap">
+            <input id="search-input" type="search" placeholder="Search visuals, topics, figure types…" aria-label="Search visuals" />
+            <button id="search-btn" class="search-btn" aria-label="Search">
+              <!-- inline SVG magnifying glass -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M21 21l-4.35-4.35" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="11" cy="11" r="6" stroke="#fff" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="filters">
+      <div class="container">
+        <div class="filters-row">
+          <div class="filters-left">
+            <div class="filter-group" data-group="figureType">
+              <div class="filter-label">Figure Type:</div>
+              <div class="chips" role="group" aria-label="Figure Type filters">
+                <button class="chip" data-value="Diagram" aria-pressed="false">Diagram</button>
+                <button class="chip" data-value="Graph" aria-pressed="false">Graph</button>
+                <button class="chip" data-value="Table" aria-pressed="false">Table</button>
+                <button class="chip" data-value="Photo" aria-pressed="false">Photo</button>
+              </div>
+            </div>
+
+            <div class="filter-group" data-group="functionPurpose">
+              <div class="filter-label">Function/Purpose:</div>
+              <div class="chips" role="group" aria-label="Function Purpose filters">
+                <button class="chip" data-value="Explanatory" aria-pressed="false">Explanatory</button>
+                <button class="chip" data-value="Organizational" aria-pressed="false">Organizational</button>
+                <button class="chip" data-value="Illustrative" aria-pressed="false">Illustrative</button>
+              </div>
+            </div>
+
+            <div class="filter-group" data-group="topic">
+              <div class="filter-label">Biology Topic:</div>
+              <div class="chips" role="group" aria-label="Biology Topic filters">
+                <button class="chip" data-value="Genetics" aria-pressed="false">Genetics</button>
+                <button class="chip" data-value="Physiology" aria-pressed="false">Physiology</button>
+                <button class="chip" data-value="Ecology" aria-pressed="false">Ecology</button>
+                <button class="chip" data-value="Cell Biology" aria-pressed="false">Cell Biology</button>
+                <button class="chip" data-value="Microbiology" aria-pressed="false">Microbiology</button>
+              </div>
+            </div>
+          </div>
+          <div class="filters-right">
+            <a href="#" id="clear-filters" class="clear-filters">Clear filters</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="library">
+      <div class="container">
+        <div class="library-header">
+          <div id="results-count">Showing 8 of 8 visuals</div>
+        </div>
+
+        <div id="cards-grid" class="cards-grid" aria-live="polite">
+          <!-- Cards rendered by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container about-inner">
+        <h2>About Us</h2>
+        <p>This website was created as part of University of Toronto Mississauga’s Research Opportunity Program (ROP) examining visual literacy in undergraduate biology and how students interpret different types of biological figures.</p>
+
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="avatar"></div>
+            <div class="name">Amal Shahzad</div>
+            <div class="role">BSc Student</div>
+          </div>
+          <div class="team-member">
+            <div class="avatar"></div>
+            <div class="name">Snigdha Mudigonda</div>
+            <div class="role">BSc Student</div>
+          </div>
+          <div class="team-member">
+            <div class="avatar"></div>
+            <div class="name">Jodie Jenkinson</div>
+            <div class="role">MScBMC Professor</div>
+          </div>
+          <div class="team-member">
+            <div class="avatar"></div>
+            <div class="name">Christoph Richter</div>
+            <div class="role">Biology Professor</div>
+          </div>
+          <div class="team-member">
+            <div class="avatar"></div>
+            <div class="name">Sanja-Hinic Frlog</div>
+            <div class="role">Biology Professor</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-inner">
+        <div class="contact-left">
+          <img src="assets/bioviz-logo.svg" alt="UTM BioViz logo" class="footer-logo" />
+          <img src="assets/utm-logo.svg" alt="UTM logo" class="footer-logo small" />
+          <p class="copyright">© UTM BioViz 2026. All rights reserved.<br>
+          <a href="#">Licensed under CC BY-NC-ND 4.0.</a></p>
+        </div>
+
+        <div class="contact-right">
+          <h3>Contact Us</h3>
+          <form id="contact-form">
+            <label class="visually-hidden" for="contact-name">Name</label>
+            <input id="contact-name" type="text" placeholder="Name" />
+
+            <label class="visually-hidden" for="contact-email">Email Address</label>
+            <input id="contact-email" type="email" placeholder="Email Address" />
+
+            <label class="visually-hidden" for="contact-message">Message</label>
+            <textarea id="contact-message" rows="4" placeholder="Message"></textarea>
+
+            <button class="btn primary" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© UTM BioViz 2026. All rights reserved.</div>
+      <div><a href="#">Licensed under CC BY-NC-ND 4.0.</a></div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
