@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="48" viewBox="0 0 120 48">
-  <rect width="120" height="48" fill="#fff"/>
-  <circle cx="24" cy="24" r="12" fill="#223474" />
-  <circle cx="44" cy="24" r="8" fill="#89AEF1" />
-  <text x="60" y="30" font-family="Inter, sans-serif" font-size="20" fill="#223474">BioViz</text>
-</svg>
