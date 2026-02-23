@@ -18,13 +18,12 @@ Setup notes:
     <div class="container header-inner">
       <div class="brand">
         <img src="./assets/bioviz-logo.png" alt="UTM BioViz logo" class="logo"/>
-        <div class="wordmark"><span class="utm">UTM</span> <span class="bioviz">BioViz</span></div>
       </div>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-      </nav>
-      <div class="header-cta">
+      <div class="nav-and-cta">
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#">Home</a>
+          <a href="#about">About</a>
+        </nav>
         <button class="btn primary" id="btn-contact-top">Contact Us</button>
       </div>
     </div>
@@ -34,7 +33,7 @@ Setup notes:
     <section class="hero">
       <div class="container hero-inner">
         <h1 class="hero-title">A Visual Literacy Library for Biology</h1>
-        <p class="hero-sub">A collection of biology figures designed to help students recognize, interpret, and use different types of visuals in biology.</p>
+        <p class="hero-sub"><em>A collection of biology figures designed to help students recognize, interpret, and use different types of visuals in biology.</em></p>
 
         <form class="search-form" role="search" onsubmit="return false;">
           <label class="visually-hidden" for="search-input">Search visuals</label>
@@ -139,39 +138,34 @@ Setup notes:
         </div>
       </div>
     </section>
-
-    <section class="contact" id="contact">
-      <div class="container contact-inner">
-        <div class="contact-left">
-          <img src="./assets/bioviz-logo.png" alt="UTM BioViz logo" class="footer-logo" />
-          <img src="./assets/utm-logo.png" alt="UTM logo" class="footer-logo small" />
-          <p class="copyright">© UTM BioViz 2026. All rights reserved.<br>
-          <a href="#">Licensed under CC BY-NC-ND 4.0.</a></p>
-        </div>
-
-        <div class="contact-right">
-          <h3>Contact Us</h3>
-          <form id="contact-form">
-            <label class="visually-hidden" for="contact-name">Name</label>
-            <input id="contact-name" type="text" placeholder="Name" />
-
-            <label class="visually-hidden" for="contact-email">Email Address</label>
-            <input id="contact-email" type="email" placeholder="Email Address" />
-
-            <label class="visually-hidden" for="contact-message">Message</label>
-            <textarea id="contact-message" rows="4" placeholder="Message"></textarea>
-
-            <button class="btn primary" type="submit">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="contact">
     <div class="container footer-inner">
-      <div>© UTM BioViz 2026. All rights reserved.</div>
-      <div><a href="#">Licensed under CC BY-NC-ND 4.0.</a></div>
+      <div class="footer-left">
+        <div class="footer-logos">
+          <img src="./assets/bioviz-logo.png" alt="UTM BioViz logo" class="logo-footer" />
+          <div class="logo-divider"></div>
+          <img src="./assets/utm-logo.png" alt="UTM logo" class="logo-footer" />
+        </div>
+        <p class="copyright">© UTM BioViz 2026. All rights reserved.<br>
+        <a href="#">Licensed under CC BY-NC-ND 4.0.</a></p>
+      </div>
+      <div class="footer-right">
+        <h3>Contact Us</h3>
+        <form id="contact-form">
+          <label class="visually-hidden" for="contact-name">Name</label>
+          <input id="contact-name" type="text" placeholder="Name" />
+
+          <label class="visually-hidden" for="contact-email">Email Address</label>
+          <input id="contact-email" type="email" placeholder="Email Address" />
+
+          <label class="visually-hidden" for="contact-message">Message</label>
+          <textarea id="contact-message" rows="4" placeholder="Message"></textarea>
+
+          <button class="btn primary" type="submit">Send Message</button>
+        </form>
+      </div>
     </div>
   </footer>
 
