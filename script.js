@@ -111,8 +111,8 @@ searchInput.addEventListener('input', (e)=>{
 // Chips interactions
 chips.forEach(ch => {
   ch.addEventListener('click', ()=>{
-    const groupEl = ch.closest('.filter-group');
-    const group = groupEl.getAttribute('data-group');
+    const rowEl = ch.closest('.filters-row');
+    const group = rowEl.getAttribute('data-filter-row');
     const value = ch.getAttribute('data-value');
     const pressed = ch.getAttribute('aria-pressed') === 'true';
 

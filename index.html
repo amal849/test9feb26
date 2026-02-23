@@ -17,7 +17,7 @@ Setup notes:
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <img src="./assets/bioviz-logo.png" alt="UTM BioViz logo" class="logo"/>
+        <img src="./assets/bioviz-logo.png" alt="UTM BioViz logo" class="header-logo"/>
       </div>
       <div class="nav-and-cta">
         <nav class="main-nav" aria-label="Main navigation">
@@ -52,42 +52,40 @@ Setup notes:
     </section>
 
     <section class="filters">
-      <div class="container">
-        <div class="filters-row">
-          <div class="filters-left">
-            <div class="filter-group" data-group="figureType">
-              <div class="filter-label">Figure Type:</div>
-              <div class="chips" role="group" aria-label="Figure Type filters">
-                <button class="chip" data-value="Diagram" aria-pressed="false">Diagram</button>
-                <button class="chip" data-value="Graph" aria-pressed="false">Graph</button>
-                <button class="chip" data-value="Table" aria-pressed="false">Table</button>
-                <button class="chip" data-value="Photo" aria-pressed="false">Photo</button>
-              </div>
-            </div>
-
-            <div class="filter-group" data-group="functionPurpose">
-              <div class="filter-label">Function/Purpose:</div>
-              <div class="chips" role="group" aria-label="Function Purpose filters">
-                <button class="chip" data-value="Explanatory" aria-pressed="false">Explanatory</button>
-                <button class="chip" data-value="Organizational" aria-pressed="false">Organizational</button>
-                <button class="chip" data-value="Illustrative" aria-pressed="false">Illustrative</button>
-              </div>
-            </div>
-
-            <div class="filter-group" data-group="topic">
-              <div class="filter-label">Biology Topic:</div>
-              <div class="chips" role="group" aria-label="Biology Topic filters">
-                <button class="chip" data-value="Genetics" aria-pressed="false">Genetics</button>
-                <button class="chip" data-value="Physiology" aria-pressed="false">Physiology</button>
-                <button class="chip" data-value="Ecology" aria-pressed="false">Ecology</button>
-                <button class="chip" data-value="Cell Biology" aria-pressed="false">Cell Biology</button>
-                <button class="chip" data-value="Microbiology" aria-pressed="false">Microbiology</button>
-              </div>
+      <div class="container filters-container">
+        <div class="filters-rows">
+          <div class="filters-row" data-filter-row="figureType">
+            <div class="filter-label">Figure Type:</div>
+            <div class="chips" role="group" aria-label="Figure Type filters">
+              <button class="chip" data-value="Diagram" aria-pressed="false">Diagram</button>
+              <button class="chip" data-value="Graph" aria-pressed="false">Graph</button>
+              <button class="chip" data-value="Table" aria-pressed="false">Table</button>
+              <button class="chip" data-value="Photo" aria-pressed="false">Photo</button>
             </div>
           </div>
-          <div class="filters-right">
-            <a href="#" id="clear-filters" class="clear-filters">Clear filters</a>
+
+          <div class="filters-row" data-filter-row="functionPurpose">
+            <div class="filter-label">Function/Purpose:</div>
+            <div class="chips" role="group" aria-label="Function Purpose filters">
+              <button class="chip" data-value="Explanatory" aria-pressed="false">Explanatory</button>
+              <button class="chip" data-value="Organizational" aria-pressed="false">Organizational</button>
+              <button class="chip" data-value="Illustrative" aria-pressed="false">Illustrative</button>
+            </div>
           </div>
+
+          <div class="filters-row" data-filter-row="topic">
+            <div class="filter-label">Biology Topic:</div>
+            <div class="chips" role="group" aria-label="Biology Topic filters">
+              <button class="chip" data-value="Genetics" aria-pressed="false">Genetics</button>
+              <button class="chip" data-value="Physiology" aria-pressed="false">Physiology</button>
+              <button class="chip" data-value="Ecology" aria-pressed="false">Ecology</button>
+              <button class="chip" data-value="Cell Biology" aria-pressed="false">Cell Biology</button>
+              <button class="chip" data-value="Microbiology" aria-pressed="false">Microbiology</button>
+            </div>
+          </div>
+        </div>
+        <div class="filters-clear">
+          <a href="#" id="clear-filters" class="clear-filters">Clear filters</a>
         </div>
       </div>
     </section>
@@ -107,7 +105,7 @@ Setup notes:
     <section id="about" class="about">
       <div class="container about-inner">
         <h2>About Us</h2>
-        <p>This website was created as part of University of Toronto Mississauga’s Research Opportunity Program (ROP) examining visual literacy in undergraduate biology and how students interpret different types of biological figures.</p>
+        <p>This website was created as part of University of Toronto Mississauga's Research Opportunity Program (ROP) examining visual literacy in undergraduate biology and how students interpret different types of biological figures.</p>
 
         <div class="team-grid">
           <div class="team-member">
