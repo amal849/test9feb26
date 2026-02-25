@@ -6,15 +6,15 @@ Setup notes:
 
 // Data: 12 example figures
 const figures = [
-  {id:1, title:'Phylogenetic Tree', href:'figures/phylogenetic-tree.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Phylogenetic Tree','Diagram','Organizational','Ecology']},
-  {id:2, title:'Cell Structure Diagram', href:'figures/cell-structure.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Cell Biology', tags:['Cell Structure','Diagram','Explanatory','Cell Biology']},
-  {id:3, title:'Genetics Pedigree', href:'figures/pedigree.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Illustrative', topic:'Genetics', tags:['Pedigree','Graph','Illustrative','Genetics']},
-  {id:4, title:'Population Growth Table', href:'figures/population-growth.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Table', functionPurpose:'Explanatory', topic:'Ecology', tags:['Population','Table','Explanatory','Ecology']},
-  {id:5, title:'Microbe Photo', href:'figures/microbe-photo.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Photo', functionPurpose:'Illustrative', topic:'Microbiology', tags:['Microbe','Photo','Illustrative','Microbiology']},
-  {id:6, title:'Physiology Flow Diagram', href:'figures/physiology-flow.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Flow','Diagram','Explanatory','Physiology']},
-  {id:7, title:'Cell Signaling Graph', href:'figures/cell-signaling.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Cell Biology', tags:['Signaling','Graph','Explanatory','Cell Biology']},
-  {id:8, title:'Biodiversity Table', href:'figures/biodiversity.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Table', functionPurpose:'Organizational', topic:'Ecology', tags:['Biodiversity','Table','Organizational','Ecology']},
-  {id:9, title:'DNA Helix Model', href:'figures/dna-helix.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Illustrative', topic:'Genetics', tags:['DNA','Helix','Diagram','Illustrative','Genetics']},
+  {id:1, title:'Bar Graph', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Physiology, Genetics', tags:['Bar Graph','Graph','Explanatory','Ecology','Physiology','Genetics']},
+  {id:2, title:'Line Graph', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Physiology, Ecology', tags:['Line Graph','Graph','Explanatory','Physiology','Ecology']},
+  {id:3, title:'Scatter Plot', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Genetics', tags:['Scatter Plot','Graph','Explanatory','Ecology','Genetics']},
+  {id:4, title:'Histogram', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Genetics, Physiology', tags:['Histogram','Graph','Explanatory','Genetics','Physiology']},
+  {id:5, title:'Phylogenetic Tree', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Phylogenetic Tree','Diagram','Organizational','Ecology']},
+  {id:6, title:'Food Web', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Food Web','Diagram','Organizational','Ecology']},
+  {id:7, title:'Muscle Contraction', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Muscle Contraction','Diagram','Explanatory','Physiology']},
+  {id:8, title:'Negative Feedback Loop', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Negative Feedback Loop','Diagram','Explanatory','Physiology','Feedback Loops']},
+  {id:9, title:'Positive Feedback Loop', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Positive Feedback Loop','Diagram','Explanatory','Physiology','Feedback Loops']},
   {id:10, title:'Enzyme Kinetics Graph', href:'figures/enzyme-kinetics.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Physiology', tags:['Enzyme','Kinetics','Graph','Explanatory','Physiology']},
   {id:11, title:'Bacterial Culture Photo', href:'figures/bacterial-culture.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Photo', functionPurpose:'Illustrative', topic:'Microbiology', tags:['Bacterial','Culture','Photo','Illustrative','Microbiology']},
   {id:12, title:'Ecosystem Hierarchy', href:'figures/ecosystem-hierarchy.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Ecosystem','Hierarchy','Diagram','Organizational','Ecology']}
@@ -67,11 +67,27 @@ function renderCards(items){
 
     const meta = document.createElement('div');
     meta.className = 'meta';
-    // show topic, figureType, functionPurpose
-    const t1 = document.createElement('span'); t1.className='chip-small'; t1.textContent = item.topic;
-    const t2 = document.createElement('span'); t2.className='chip-small'; t2.textContent = item.figureType;
-    const t3 = document.createElement('span'); t3.className='chip-small'; t3.textContent = item.functionPurpose;
-    meta.append(t1,t2,t3);
+
+    // Split topics into an array
+    const topicsArray = item.topic.split(',').map(t => t.trim());
+
+    // Create one chip per topic
+    topicsArray.forEach(topic => {
+      const topicChip = document.createElement('span');
+      topicChip.className = 'chip-small';
+      topicChip.textContent = topic;
+      meta.appendChild(topicChip);
+    });
+
+    const t2 = document.createElement('span');
+    t2.className='chip-small';
+    t2.textContent = item.figureType;
+
+    const t3 = document.createElement('span');
+    t3.className='chip-small';
+    t3.textContent = item.functionPurpose;
+
+    meta.append(t2,t3);
 
     a.append(thumb,h3,meta);
     grid.appendChild(a);
@@ -90,7 +106,8 @@ function applyFilters(){
     // category filters (if any selected in a category, item must match at least one)
     const matchFigureType = f.figureType.size === 0 || f.figureType.has(item.figureType);
     const matchFunction = f.functionPurpose.size === 0 || f.functionPurpose.has(item.functionPurpose);
-    const matchTopic = f.topic.size === 0 || f.topic.has(item.topic);
+    const itemTopics = item.topic.split(',').map(t => t.trim());
+    const matchTopic = f.topic.size === 0 || itemTopics.some(t => f.topic.has(t));
 
     return inSearch && matchFigureType && matchFunction && matchTopic;
   });
