@@ -167,6 +167,6 @@ contactTopBtn.addEventListener('click', ()=>{
 const contactForm = document.getElementById('contact-form');
 contactForm.addEventListener('submit', (e)=>{
   e.preventDefault();
-  alert('Thanks, your message has been recorded (demo).');
+  alert('Thanks, your message has been recorded.');
   contactForm.reset();
 });

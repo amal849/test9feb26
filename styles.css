@@ -284,7 +284,7 @@ a:hover{
   display:flex;align-items:center;gap:16px;margin-top:46px
 }
 .logo-footer{
-  height:100px;width:auto;object-fit:contain;flex-shrink:0;display:block
+  height:95px;width:auto;object-fit:contain;flex-shrink:0;display:block
 }
 .logo-divider{
   width:1px;height:60px;background:var(--lightGrey);margin-left:-5px
@@ -340,8 +340,8 @@ a:hover{
   .cards-grid{grid-template-columns:repeat(4,1fr)}
   .team-grid{grid-template-columns:repeat(5,1fr)}
   .header-logo{height:67px}
-  .logo-footer{height:100px}
-  .logo-divider{height:100px}
+  .logo-footer{height:95px}
+  .logo-divider{height:95px}
 }
 @media(max-width:600px){
   .header-logo{height:50px}
