@@ -12,7 +12,7 @@ const figures = [
   {id:4, title:'Histogram', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Genetics, Physiology', tags:['Histogram','Graph','Explanatory','Genetics','Physiology']},
   {id:5, title:'Phylogenetic Tree', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Phylogenetic Tree','Diagram','Organizational','Ecology']},
   {id:6, title:'Food Web', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Food Web','Diagram','Organizational','Ecology']},
-  {id:7, title:'Muscle Contraction', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Muscle Contraction','Diagram','Explanatory','Physiology']},
+  {id:7, title:'Muscle Contraction', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Muscle Contraction','Diagram','Explanatory','Physiology'], image:'assets/muscle-contraction.png'},
   {id:8, title:'Negative Feedback Loop', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Negative Feedback Loop','Diagram','Explanatory','Physiology','Feedback Loops']},
   {id:9, title:'Positive Feedback Loop', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Positive Feedback Loop','Diagram','Explanatory','Physiology','Feedback Loops']},
   {id:10, title:'Enzyme Kinetics Graph', href:'figures/enzyme-kinetics.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Physiology', tags:['Enzyme','Kinetics','Graph','Explanatory','Physiology']},
@@ -51,6 +51,11 @@ function renderCards(items){
     a.href = item.href;
     a.className = 'card';
     a.setAttribute('aria-label', item.title);
+    a.setAttribute('data-figure-id', item.id);
+    a.setAttribute('data-title', item.title);
+    a.setAttribute('data-figure-type', item.figureType);
+    a.setAttribute('data-function', item.functionPurpose);
+    a.setAttribute('data-topic', item.topic);
 
     const thumb = document.createElement('div');
     thumb.className = 'thumb';
@@ -164,9 +169,77 @@ contactTopBtn.addEventListener('click', ()=>{
 });
 
 // Contact form submit (demo)
+
 const contactForm = document.getElementById('contact-form');
 contactForm.addEventListener('submit', (e)=>{
   e.preventDefault();
   alert('Thanks, your message has been recorded.');
   contactForm.reset();
+});
+
+// Modal logic
+const modal = document.getElementById('figure-modal');
+const modalDialog = modal.querySelector('.modal-dialog');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+const modalTitle = document.getElementById('modal-title');
+const modalChips = document.getElementById('modal-chips');
+const modalImage = document.getElementById('modal-image');
+let lastFocusedCard = null;
+
+function openModal(card) {
+  // Save last focused card
+  lastFocusedCard = card;
+  // Find figure object by id
+  const figureId = card.getAttribute('data-figure-id');
+  const figure = figures.find(f => String(f.id) === String(figureId));
+  // Set modal pill text: FigureType | Topic | FunctionPurpose
+  const pill = document.getElementById('figure-modal-pill');
+  pill.textContent = `${figure.figureType} | ${figure.topic} | ${figure.functionPurpose}`;
+  // Set modal title
+  modalTitle.textContent = figure.title;
+  // Set modal image (use figure.image if available, else placeholder)
+  modalImage.src = figure.image ? figure.image : 'assets/placeholder.png';
+  // Show modal
+  modal.style.display = 'flex';
+  modal.setAttribute('aria-hidden','false');
+  // Focus trap
+  setTimeout(()=>{modalDialog.focus();}, 10);
+  // Add listeners
+  document.addEventListener('keydown', handleModalKey);
+}
+
+function closeModal() {
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden','true');
+  document.removeEventListener('keydown', handleModalKey);
+  // Return focus to last card
+  if(lastFocusedCard) lastFocusedCard.focus();
+}
+
+function handleModalKey(e) {
+  if(e.key === 'Escape') closeModal();
+  // Focus trap: Tab/Shift+Tab
+  const focusable = [modalCloseBtn, modalDialog];
+  if(e.key === 'Tab') {
+    const idx = focusable.indexOf(document.activeElement);
+    if(e.shiftKey) {
+      if(idx === 0) { e.preventDefault(); focusable[focusable.length-1].focus(); }
+    } else {
+      if(idx === focusable.length-1) { e.preventDefault(); focusable[0].focus(); }
+    }
+  }
+}
+
+modalCloseBtn.addEventListener('click', closeModal);
+modal.addEventListener('click', (e)=>{
+  if(e.target === modal) closeModal();
+});
+
+// Event delegation: open modal on card click
+grid.addEventListener('click', function(e){
+  const card = e.target.closest('.card');
+  if(card) {
+    e.preventDefault();
+    openModal(card);
+  }
 });
