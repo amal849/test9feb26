@@ -178,68 +178,99 @@ contactForm.addEventListener('submit', (e)=>{
 });
 
 // Modal logic
+
+// =====================
+// Modal logic (mockup)
+// =====================
 const modal = document.getElementById('figure-modal');
-const modalDialog = modal.querySelector('.modal-dialog');
+const modalDialog = modal.querySelector('.figure-modal-dialog');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const modalTitle = document.getElementById('modal-title');
-const modalChips = document.getElementById('modal-chips');
 const modalImage = document.getElementById('modal-image');
+const modalPill = document.getElementById('figure-modal-pill');
+
 let lastFocusedCard = null;
 
 function openModal(card) {
-  // Save last focused card
   lastFocusedCard = card;
-  // Find figure object by id
+
   const figureId = card.getAttribute('data-figure-id');
   const figure = figures.find(f => String(f.id) === String(figureId));
-  // Set modal pill text: FigureType | Topic | FunctionPurpose
-  const pill = document.getElementById('figure-modal-pill');
-  pill.textContent = `${figure.figureType} | ${figure.topic} | ${figure.functionPurpose}`;
-  // Set modal title
+
+  if (!figure) return;
+
+  // Pill: FigureType | Topic | FunctionPurpose
+  // If topic contains commas, use the first topic for the pill (matches your mockup style)
+  const firstTopic = (figure.topic || '').split(',')[0].trim();
+  modalPill.textContent = `${figure.figureType} | ${firstTopic} | ${figure.functionPurpose}`;
+
+  // Title: matches the card title
   modalTitle.textContent = figure.title;
-  // Set modal image (use figure.image if available, else placeholder)
+
+  // Image: use the real figure image when available
+  // For Muscle Contraction, this will use: assets/muscle-contraction.png
   modalImage.src = figure.image ? figure.image : 'assets/placeholder.png';
+  modalImage.alt = `${figure.title} figure`;
+
   // Show modal
   modal.style.display = 'flex';
-  modal.setAttribute('aria-hidden','false');
-  // Focus trap
-  setTimeout(()=>{modalDialog.focus();}, 10);
-  // Add listeners
+  modal.setAttribute('aria-hidden', 'false');
+
+  // Focus
+  setTimeout(() => {
+    modalDialog.focus();
+  }, 10);
+
   document.addEventListener('keydown', handleModalKey);
 }
 
 function closeModal() {
   modal.style.display = 'none';
-  modal.setAttribute('aria-hidden','true');
+  modal.setAttribute('aria-hidden', 'true');
   document.removeEventListener('keydown', handleModalKey);
-  // Return focus to last card
-  if(lastFocusedCard) lastFocusedCard.focus();
+
+  if (lastFocusedCard) {
+    lastFocusedCard.focus();
+  }
 }
 
 function handleModalKey(e) {
-  if(e.key === 'Escape') closeModal();
-  // Focus trap: Tab/Shift+Tab
-  const focusable = [modalCloseBtn, modalDialog];
-  if(e.key === 'Tab') {
+  if (e.key === 'Escape') {
+    closeModal();
+    return;
+  }
+
+  // Basic focus trap between dialog + close button
+  if (e.key === 'Tab') {
+    const focusable = [modalCloseBtn, modalDialog];
     const idx = focusable.indexOf(document.activeElement);
-    if(e.shiftKey) {
-      if(idx === 0) { e.preventDefault(); focusable[focusable.length-1].focus(); }
+
+    if (e.shiftKey) {
+      if (idx <= 0) {
+        e.preventDefault();
+        focusable[focusable.length - 1].focus();
+      }
     } else {
-      if(idx === focusable.length-1) { e.preventDefault(); focusable[0].focus(); }
+      if (idx === focusable.length - 1) {
+        e.preventDefault();
+        focusable[0].focus();
+      }
     }
   }
 }
 
 modalCloseBtn.addEventListener('click', closeModal);
-modal.addEventListener('click', (e)=>{
-  if(e.target === modal) closeModal();
+
+// Close when clicking the blue backdrop (not the white dialog)
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
 });
 
-// Event delegation: open modal on card click
-grid.addEventListener('click', function(e){
+// Open modal on card click (keeps main page intact)
+grid.addEventListener('click', function (e) {
   const card = e.target.closest('.card');
-  if(card) {
-    e.preventDefault();
-    openModal(card);
-  }
+  if (!card) return;
+
+  e.preventDefault();
+  openModal(card);
 });
