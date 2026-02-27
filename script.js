@@ -209,7 +209,7 @@ function openModal(card) {
 
   // Image: use the real figure image when available
   // For Muscle Contraction, this will use: assets/muscle-contraction.png
-  modalImage.src = figure.image ? figure.image : 'assets/placeholder.png';
+  modalImage.src = figure.image || 'assets/placeholder.png';
   modalImage.alt = `${figure.title} figure`;
 
   // Show modal

@@ -168,36 +168,39 @@ Setup notes:
   </footer>
 
   <script src="script.js" defer></script>
-  <!-- Modal Popup for Figure Details -->
-    <div
-      id="figure-modal"
-      class="figure-modal-backdrop"
-      tabindex="-1"
-      aria-hidden="true"
-      role="dialog"
-      aria-modal="true"
-      style="display: none;"
-    >
-      <div class="figure-modal-dialog" role="document" tabindex="0">
-        <div class="figure-modal-content">
-          <div class="figure-modal-header">
+<!-- Modal Popup for Figure Details -->
+<div
+  id="figure-modal"
+  class="figure-modal-backdrop"
+  tabindex="-1"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  style="display:none;"
+>
+  <div class="figure-modal-dialog" role="document" tabindex="0">
+    <!-- Blue frame -->
+    <div class="figure-modal-frame">
+      <!-- White inner panel -->
+      <div class="figure-modal-panel">
+        <div class="figure-modal-header">
             <div class="figure-modal-pill" id="figure-modal-pill"></div>
             <button class="figure-modal-close" aria-label="Close dialog" id="modal-close-btn">×</button>
           </div>
 
           <h1 class="figure-modal-title" id="modal-title"></h1>
 
-          <div class="figure-modal-top-grid">
-            <div class="figure-modal-image-col">
-              <img
-                id="modal-image"
-                src="assets/placeholder.png"
-                alt="Figure image"
-                class="figure-modal-image"
-              />
-            </div>
+        <div class="figure-modal-top-grid">
+          <div class="figure-modal-whitebox figure-modal-imagebox">
+            <img
+              id="modal-image"
+              src="assets/placeholder.png"
+              alt="Figure image"
+              class="figure-modal-image"
+            />
+          </div>
 
-            <div class="figure-modal-sidebar">
+          <div class="figure-modal-sidebar">
               <div class="figure-modal-card figure-modal-facts">
                 <div class="figure-modal-card-header">
                   <span class="figure-modal-card-icon">💡</span>
@@ -221,12 +224,12 @@ Setup notes:
                   The release of the phosphate ion (Pi) triggers the myosin head to snap forward causing the
                   actin filament to be pulled inwards (power stroke).
                 </div>
-              </div>
             </div>
           </div>
+        </div>
 
-          <div class="figure-modal-bottom">
-            <div class="figure-modal-section">
+        <div class="figure-modal-whitebox figure-modal-bottom">
+          <div class="figure-modal-section">
               <div class="figure-modal-section-title">What is this?</div>
               <div class="figure-modal-section-content">
                 This is a diagram of an actin-myosin cross-bridge cycle, which is used by muscle cells to undergo
@@ -250,7 +253,11 @@ Setup notes:
           </div>
         </div>
       </div>
+      <!-- end white panel -->
     </div>
-    <!-- End Modal Popup -->
+    <!-- end blue frame -->
+  </div>
+</div>
+<!-- End Modal Popup -->
 </body>
 </html>
