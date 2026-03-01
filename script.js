@@ -188,8 +188,119 @@ const modalCloseBtn = document.getElementById('modal-close-btn');
 const modalTitle = document.getElementById('modal-title');
 const modalImage = document.getElementById('modal-image');
 const modalPill = document.getElementById('figure-modal-pill');
+const modalWhatIsThis = document.getElementById('modal-what-is-this');
+const modalHowUnderstand = document.getElementById('modal-how-understand');
+const modalQuickFacts = document.getElementById('modal-quick-facts');
+const modalMisconTitle = document.getElementById('modal-miscon-title');
+const modalMisconWrong = document.getElementById('modal-miscon-wrong');
+const modalMisconDetail = document.getElementById('modal-miscon-detail');
+
+const defaultModalContent = {
+  whatIsThis: modalWhatIsThis ? modalWhatIsThis.textContent.trim() : '',
+  howToUnderstand: modalHowUnderstand ? Array.from(modalHowUnderstand.querySelectorAll('div')).map(node => node.textContent.trim()) : [],
+  quickFacts: modalQuickFacts ? Array.from(modalQuickFacts.querySelectorAll('li')).map(node => node.textContent.trim()) : [],
+  misconceptionTitle: modalMisconTitle ? modalMisconTitle.textContent.trim() : '',
+  misconceptionWrongHtml: modalMisconWrong ? modalMisconWrong.innerHTML : '',
+  misconceptionDetail: modalMisconDetail ? modalMisconDetail.textContent.trim() : ''
+};
+
+const emptyModalContent = {
+  whatIsThis: '',
+  howToUnderstand: [],
+  quickFacts: [],
+  misconceptionTitle: '',
+  misconceptionWrongHtml: '',
+  misconceptionDetail: ''
+};
 
 let lastFocusedCard = null;
+
+function setQuickFacts(items) {
+  if (!modalQuickFacts) return;
+  modalQuickFacts.innerHTML = '';
+  items.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    modalQuickFacts.appendChild(li);
+  });
+}
+
+function setHowToUnderstand(items) {
+  if (!modalHowUnderstand) return;
+  modalHowUnderstand.innerHTML = '';
+  items.forEach(item => {
+    const row = document.createElement('div');
+    const stepMatch = String(item).match(/^(Step\s+\d+)\s*-\s*(.*)$/i);
+
+    if (stepMatch) {
+      const label = document.createElement('strong');
+      label.textContent = stepMatch[1];
+      row.appendChild(label);
+      row.appendChild(document.createTextNode(` - ${stepMatch[2]}`));
+    } else {
+      row.textContent = item;
+    }
+
+    modalHowUnderstand.appendChild(row);
+  });
+}
+
+function setMisconWrong(text, html) {
+  if (!modalMisconWrong) return;
+
+  if (html) {
+    modalMisconWrong.innerHTML = html;
+    return;
+  }
+
+  if (typeof text !== 'string') {
+    modalMisconWrong.innerHTML = '';
+    return;
+  }
+
+  const trimmed = text.trim();
+  if (/^WRONG!/i.test(trimmed)) {
+    const rest = trimmed.replace(/^WRONG!\s*/i, '');
+    modalMisconWrong.innerHTML = `<strong>WRONG!</strong>${rest ? ` ${rest}` : ''}`;
+    return;
+  }
+
+  modalMisconWrong.textContent = trimmed;
+}
+
+function getResolvedModalContent(figure) {
+  if (figure && figure.modalContent) {
+    return {
+      whatIsThis: figure.modalContent.whatIsThis || '',
+      howToUnderstand: Array.isArray(figure.modalContent.howToUnderstand) ? figure.modalContent.howToUnderstand : [],
+      quickFacts: Array.isArray(figure.modalContent.quickFacts) ? figure.modalContent.quickFacts : [],
+      misconceptionTitle: figure.modalContent.misconceptionTitle || '',
+      misconceptionWrong: figure.modalContent.misconceptionWrong,
+      misconceptionWrongHtml: figure.modalContent.misconceptionWrongHtml || '',
+      misconceptionDetail: figure.modalContent.misconceptionDetail || ''
+    };
+  }
+
+  return figure && figure.id === 7
+    ? {
+        whatIsThis: defaultModalContent.whatIsThis,
+        howToUnderstand: defaultModalContent.howToUnderstand,
+        quickFacts: defaultModalContent.quickFacts,
+        misconceptionTitle: defaultModalContent.misconceptionTitle,
+        misconceptionWrong: undefined,
+        misconceptionWrongHtml: defaultModalContent.misconceptionWrongHtml,
+        misconceptionDetail: defaultModalContent.misconceptionDetail
+      }
+    : {
+        whatIsThis: emptyModalContent.whatIsThis,
+        howToUnderstand: emptyModalContent.howToUnderstand,
+        quickFacts: emptyModalContent.quickFacts,
+        misconceptionTitle: emptyModalContent.misconceptionTitle,
+        misconceptionWrong: undefined,
+        misconceptionWrongHtml: emptyModalContent.misconceptionWrongHtml,
+        misconceptionDetail: emptyModalContent.misconceptionDetail
+      };
+}
 
 function openModal(card) {
   lastFocusedCard = card;
@@ -200,9 +311,8 @@ function openModal(card) {
   if (!figure) return;
 
   // Pill: FigureType | Topic | FunctionPurpose
-  // If topic contains commas, use the first topic for the pill (matches your mockup style)
-  const firstTopic = (figure.topic || '').split(',')[0].trim();
-  modalPill.textContent = `${figure.figureType} | ${firstTopic} | ${figure.functionPurpose}`;
+  // Show all topics
+  modalPill.textContent = `${figure.figureType} | ${figure.topic} | ${figure.functionPurpose}`;
 
   // Title: matches the card title
   modalTitle.textContent = figure.title;
@@ -211,6 +321,26 @@ function openModal(card) {
   // For Muscle Contraction, this will use: assets/muscle-contraction.png
   modalImage.src = figure.image || 'assets/placeholder.png';
   modalImage.alt = `${figure.title} figure`;
+
+  const modalContent = getResolvedModalContent(figure);
+
+  if (modalWhatIsThis) {
+    modalWhatIsThis.textContent = modalContent.whatIsThis;
+  }
+
+  setHowToUnderstand(modalContent.howToUnderstand);
+
+  setQuickFacts(modalContent.quickFacts);
+
+  if (modalMisconTitle) {
+    modalMisconTitle.textContent = modalContent.misconceptionTitle;
+  }
+
+  setMisconWrong(modalContent.misconceptionWrong, modalContent.misconceptionWrongHtml);
+
+  if (modalMisconDetail) {
+    modalMisconDetail.textContent = modalContent.misconceptionDetail;
+  }
 
   // Show modal
   modal.style.display = 'flex';

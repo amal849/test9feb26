@@ -129,11 +129,12 @@
 }
 
 .figure-modal-card-header{
-  display: flex;
-  align-items: center; gap: 5px;
   margin-bottom: 0;
   background: #D9E5FB;
-  padding: 8px 14px;
+  padding: 11px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .figure-modal-card-title{
@@ -141,13 +142,15 @@
   font-size: 17px;
   font-weight: 800;
   color: #223474;
-  justify-content: center;
+  text-align: center;
+  margin: 0;
 }
 
 .figure-modal-card-icon{
   width: 33px;
   height: 33px;
   object-fit: contain;
+  margin-left: 6.5px;
 }
 
 .figure-modal-card ul{
@@ -187,25 +190,35 @@
 
 .figure-modal-miscon-content{
   padding: 15px;
+  text-align: center;
 }
 
 .figure-modal-miscon-title{
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   font-weight: 800;
   color: #223474;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
   font-size: 15px;
+  line-height: 1.3;
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .figure-modal-miscon-wrong{
-  font-weight: 900;
-  color: #D62828;
-  margin-bottom: 6px;
+  font-weight: 400;
+  color: #223474;
+  margin-bottom: 12px;
   font-size: 15px;
+  line-height: 1.3;
+}
+
+.figure-modal-miscon-wrong strong{
+  color: #223474;
+  font-weight: 900;
 }
 
 .figure-modal-miscon-detail{
-  color: #4B4A4A;
+  color: #223474;
   line-height: 1.3;
   font-size: 15px;
 }
@@ -291,9 +304,10 @@
   color: #223474;
   text-decoration: underline;
 }
-/* Glow effect for Home and About links on hover */
+/* Shadow effect for Home and About links on hover */
 .main-nav a:hover {
-  text-shadow: 0 0 8px #FFFFFF, 0 0 16px #5D76CF;
+  filter: drop-shadow(0 6px 18px var(--header-hover-shadow));
+  transform: translateY(-1px);
   color: #121E47;
 }
 :root{
@@ -306,6 +320,7 @@
   --midGrey: #ACAEB9;
   --lightGrey: #D9D9D9;
   --white: #FFFFFF;
+  --header-hover-shadow: rgba(34,52,116,0.12);
 
   /* Typography */
   --font-heading: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -394,7 +409,7 @@ a:hover{
   display:flex;justify-content:center;gap:120px
 }
 .main-nav a{
-  color:var(--navy);text-decoration:none;font-weight:400;font-size:1.125rem;font-family:var(--font-heading);padding:6px 0
+  color:var(--navy);text-decoration:none;font-weight:400;font-size:1.125rem;font-family:var(--font-heading);padding:6px 0;display:inline-block;transition:filter .12s ease,transform .12s ease,color .12s ease
 }
 .site-header, .site-header a, .site-header .btn{
   font-family:var(--font-heading)
@@ -411,7 +426,7 @@ a:hover{
   background:var(--navy);color:var(--white);font-weight:600
 }
 .btn.primary:hover{
-  box-shadow:0 6px 18px rgba(34,52,116,0.12);transform:translateY(-1px)
+  box-shadow:0 6px 18px var(--header-hover-shadow);transform:translateY(-1px)
 }
 
 /* Hero */

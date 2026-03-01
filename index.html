@@ -203,7 +203,7 @@ Setup notes:
 
             <div class="figure-modal-section">
               <div class="figure-modal-section-title">What is this?</div>
-              <div class="figure-modal-section-content">
+              <div class="figure-modal-section-content" id="modal-what-is-this">
                 This is a diagram of an actin-myosin cross-bridge cycle, which is used by muscle cells to undergo
                 muscle contraction.
               </div>
@@ -212,7 +212,7 @@ Setup notes:
             <div class="figure-modal-section">
               <div class="figure-modal-section-title">How do I understand it?</div>
               <div class="figure-modal-section-content">
-                <div class="figure-modal-steps">
+                <div class="figure-modal-steps" id="modal-how-understand">
                   <div><strong>Step 1</strong> - Myosin is attached to the actin filament.</div>
                   <div><strong>Step 2</strong> - ATP binds to the myosin head, releasing it from the actin filament.</div>
                   <div><strong>Step 3</strong> - ATP is hydrolyzed to produce one ADP and one phosphate ion (Pi). The energy released by hydrolysis causes the myosin head to cock back.</div>
@@ -227,11 +227,10 @@ Setup notes:
           <div class="figure-modal-sidebar">
                 <div class="figure-modal-card figure-modal-facts">
                 <div class="figure-modal-card-header">
-                  <img src="assets/bulb.png" alt="bulb icon" class="figure-modal-card-icon">
                   <span class="figure-modal-card-title">Quick Facts:</span>
                 </div>
                 <div class="figure-modal-facts-list">
-                  <ul>
+                  <ul id="modal-quick-facts">
                     <li>ATP binding causes detachment</li>
                     <li>Pi (phosphate) triggers the power stroke</li>
                     <li>The cycle repeats as long as ATP is available</li>
@@ -241,13 +240,12 @@ Setup notes:
 
               <div class="figure-modal-card figure-modal-misconception">
                 <div class="figure-modal-card-header">
-                  <span class="figure-modal-card-icon">⚠️</span>
                   <span class="figure-modal-card-title">Common Misconception:</span>
                 </div>
                 <div class="figure-modal-miscon-content">
-                  <div class="figure-modal-miscon-title">"The release of ADP causes the power stroke."</div>
-                  <div class="figure-modal-miscon-wrong">WRONG! ADP does NOT cause the power stroke.</div>
-                  <div class="figure-modal-miscon-detail">
+                  <div class="figure-modal-miscon-title" id="modal-miscon-title">"The release of ADP causes the power stroke."</div>
+                  <div class="figure-modal-miscon-wrong" id="modal-miscon-wrong"><strong>WRONG!</strong> ADP does NOT cause the power stroke.</div>
+                  <div class="figure-modal-miscon-detail" id="modal-miscon-detail">
                     The release of the phosphate ion (Pi) triggers the myosin head to snap forward causing the
                     actin filament to be pulled inwards (power stroke).
                   </div>
