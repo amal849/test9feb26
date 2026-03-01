@@ -12,7 +12,7 @@ const figures = [
   {id:4, title:'Histogram', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Genetics, Physiology', tags:['Histogram','Graph','Explanatory','Genetics','Physiology']},
   {id:5, title:'Phylogenetic Tree', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Phylogenetic Tree','Diagram','Organizational','Ecology']},
   {id:6, title:'Food Web', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Food Web','Diagram','Organizational','Ecology']},
-  {id:7, title:'Muscle Contraction', href:'#', thumbnail:'assets/muscle-contraction-thumb.png', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Muscle Contraction','Diagram','Explanatory','Physiology'], image:'assets/muscle-contraction.png'},
+  {id:7, title:'Muscle Contraction', href:'#', thumbnail:'assets/muscle-contraction-thumb.png', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Muscle Contraction','Diagram','Explanatory','Physiology'], image:'assets/muscle-contraction.png', caption:'Muscle contraction mechanism. Modified from DataBase Center for Life Science (DBCLS), <em>Mechanism of skeletal muscle contraction</em>, 2021. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.'},
   {id:8, title:'Negative Feedback Loop', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Negative Feedback Loop','Diagram','Explanatory','Physiology','Feedback Loops']},
   {id:9, title:'Positive Feedback Loop', href:'#', thumbnail:'assets/thumb-placeholder.svg', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Positive Feedback Loop','Diagram','Explanatory','Physiology','Feedback Loops']},
   {id:10, title:'Enzyme Kinetics Graph', href:'figures/enzyme-kinetics.html', thumbnail:'assets/thumb-placeholder.svg', figureType:'Graph', functionPurpose:'Explanatory', topic:'Physiology', tags:['Enzyme','Kinetics','Graph','Explanatory','Physiology']},
@@ -59,13 +59,17 @@ function renderCards(items){
 
     const thumb = document.createElement('div');
     thumb.className = 'thumb';
-    const img = document.createElement('img');
-    img.src = item.thumbnail;
-    img.alt = item.title + ' thumbnail';
-    img.style.maxWidth = '100%';
-    img.style.height = '100%';
-    img.style.objectFit = 'cover';
-    thumb.appendChild(img);
+    
+    // Only show image if it's not a placeholder (e.g., muscle contraction)
+    if (item.thumbnail && !item.thumbnail.includes('placeholder')) {
+      const img = document.createElement('img');
+      img.src = item.thumbnail;
+      img.alt = item.title + ' thumbnail';
+      img.style.maxWidth = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      thumb.appendChild(img);
+    }
 
     const h3 = document.createElement('h3');
     h3.textContent = item.title;
@@ -187,6 +191,7 @@ const modalDialog = modal.querySelector('.figure-modal-dialog');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const modalTitle = document.getElementById('modal-title');
 const modalImage = document.getElementById('modal-image');
+const modalCaption = document.getElementById('modal-caption');
 const modalPill = document.getElementById('figure-modal-pill');
 const modalWhatIsThis = document.getElementById('modal-what-is-this');
 const modalHowUnderstand = document.getElementById('modal-how-understand');
@@ -322,6 +327,16 @@ function openModal(card) {
   modalImage.src = figure.image || 'assets/placeholder.png';
   modalImage.alt = `${figure.title} figure`;
 
+  // Caption: set the figure caption if available
+  if (modalCaption) {
+    if (figure.caption) {
+      modalCaption.innerHTML = figure.caption;
+      modalCaption.style.display = 'block';
+    } else {
+      modalCaption.style.display = 'none';
+    }
+  }
+
   const modalContent = getResolvedModalContent(figure);
 
   if (modalWhatIsThis) {
@@ -342,9 +357,11 @@ function openModal(card) {
     modalMisconDetail.textContent = modalContent.misconceptionDetail;
   }
 
-  // Show modal
+  // Show modal with fade in animation
   modal.style.display = 'flex';
   modal.setAttribute('aria-hidden', 'false');
+  modal.classList.remove('fade-out');
+  modal.classList.add('fade-in');
 
   // Focus
   setTimeout(() => {
@@ -355,13 +372,19 @@ function openModal(card) {
 }
 
 function closeModal() {
-  modal.style.display = 'none';
-  modal.setAttribute('aria-hidden', 'true');
-  document.removeEventListener('keydown', handleModalKey);
+  modal.classList.remove('fade-in');
+  modal.classList.add('fade-out');
+  
+  // Wait for fade out animation to complete before hiding
+  setTimeout(() => {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    document.removeEventListener('keydown', handleModalKey);
 
-  if (lastFocusedCard) {
-    lastFocusedCard.focus();
-  }
+    if (lastFocusedCard) {
+      lastFocusedCard.focus();
+    }
+  }, 300); // matches the animation duration
 }
 
 function handleModalKey(e) {
