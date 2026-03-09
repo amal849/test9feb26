@@ -21,7 +21,36 @@ const figures = [
   {id:2, title:'Line Graph', href:'#', thumbnail:'assets/heart_rate_linegraph.png', image:'assets/heart_rate_linegraph.png', caption:'Bone density across age. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Physiology, Ecology', tags:['Line Graph','Graph','Explanatory','Physiology','Ecology']},
   {id:3, title:'Scatter Plot', href:'#', thumbnail:'assets/sleepduration_screentime_scatterplot.png', image:'assets/sleepduration_screentime_scatterplot.png', caption:'Sleep duration versus daily screen time. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Genetics, Physiology', tags:['Scatter Plot','Graph','Explanatory','Ecology','Genetics','Physiology']},
   {id:4, title:'Histogram', href:'#', thumbnail:'assets/petal_length_histogram.png', image:'assets/petal_length_histogram.png', caption:'Distribution of petal length. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Genetics, Physiology', tags:['Histogram','Graph','Explanatory','Ecology','Genetics','Physiology']},
-  {id:5, title:'Phylogenetic Tree', href:'#', thumbnail:'assets/phylogenetic-tree.png', image:'assets/phylogenetic-tree.png', caption:'Phylogenetic tree illustrating evolutionary relationships among selected mammals. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Animal silhouettes sourced from <a href="https://www.phylopic.org" target="_blank" rel="noopener">PhyloPic</a> (<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a>).', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Phylogenetic Tree','Diagram','Organizational','Ecology']},
+  {
+    id:5,
+    title:'Phylogenetic Tree',
+    href:'#',
+    thumbnail:'assets/phylogenetic-tree.png',
+    image:'assets/phylogenetic-tree.png',
+    caption:'Phylogenetic tree illustrating evolutionary relationships among selected mammals. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Animal silhouettes sourced from <a href="https://www.phylopic.org" target="_blank" rel="noopener">PhyloPic</a> (<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a>).',
+    figureType:'Diagram',
+    functionPurpose:'Organizational',
+    topic:'Ecology',
+    tags:['Phylogenetic Tree','Diagram','Organizational','Ecology'],
+    modalContent:{
+      whatIsThis:'This is a phylogenetic tree describing the evolutionary relationships and common ancestry between various mammalian species.',
+      howToUnderstand:[
+        'Step 1 - Begin by looking at the root of the tree. This represents the population leading to the common ancestor of all the taxa at the tips of the branches. As you move from bottom to top on the diagram, you move forward in time, and evolution occurs, giving rise to many lineage branches.',
+        'Step 2 - Each common ancestor is represented by a node on the diagram. Notice how after the first speciation event (when a common ancestor lineage splits into two or more daughter lineages), there are two daughter lineages: one forming an outgroup (right) and the other a clade (left).',
+        'Step 3 - Notice how the outgroup branches off at the base of the tree? This shows that the platypus lineage diverged earlier than the other species and is more genetically distinct from the species within a clade.',
+        'Step 4 - Next, look at the clade on the left. Observe how there are many different lineage branches within this clade. Species within a clade are more closely related than the outgroup.',
+        '• For example, gorillas and horses are more closely related to each other than horses and platypuses, because gorillas and horses share a more recent common ancestor on the tree.',
+        'Step 5 - Determine species relatedness by identifying the most recent common ancestor (nodes). Work your way up by observing the nodes and determining where the lineage branches end up.'
+      ],
+      quickFacts:[
+        'Nodes represent common ancestors of related species.',
+        'Branches represent daughter lineages of nodes.'
+      ],
+      misconceptionTitle:'"Species that are closer together at the tips of the branches are more closely related."',
+      misconceptionWrongHtml:'<strong>WRONG!</strong> Species that share a more recent common ancestor at a node determine species relatedness. Remember that branches can be rotated, flipping the order of the species.',
+      misconceptionDetail:'"Species on the left, like humans, are more evolved than species on the right." WRONG! The species are not arranged in a particular order (i.e., most evolved to least evolved). Remember that branches are able to rotate, changing the order of the species.'
+    }
+  },
   {id:6, title:'Food Web', href:'#', thumbnail:'assets/food-web.png', modalImageWidth:'85%',image:'assets/food-web.png', caption:'Food web illustrating trophic interactions among selected terrestrial organisms. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Animal silhouettes sourced from <a href="https://www.phylopic.org/" target="_blank" rel="noopener">PhyloPic</a> (<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a>).', figureType:'Diagram', functionPurpose:'Organizational', topic:'Ecology', tags:['Food Web','Diagram','Organizational','Ecology']},
   {id:7, title:'Muscle Contraction', href:'#', thumbnail:'assets/muscle-contraction-thumb.png', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Muscle Contraction','Diagram','Explanatory','Physiology'], image:'assets/muscle-contraction-thumb.png', modalImageWidth:'70%', caption:'Muscle contraction mechanism. DataBase Center for Life Science (DBCLS), <em>Mechanism of skeletal muscle contraction</em>, 2021. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.'},
   {id:8, title:'Negative Feedback Loop', href:'#', thumbnail:'assets/Negative-Feedback-Loops.png', image:'assets/Negative-Feedback-Loops2.png', caption:'Negative feedback loop regulating body temperature homeostasis. OpenStax, <em>Negative Feedback Loops</em>, 2016. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.', figureType:'Diagram', functionPurpose:'Explanatory', topic:'Physiology', tags:['Negative Feedback Loop','Diagram','Explanatory','Physiology','Feedback Loops']},
@@ -410,9 +439,20 @@ function openModal(card) {
   }, 10);
 
   document.addEventListener('keydown', handleModalKey);
+  
+  // Inject hotspots for figures with configured annotations
+  if (hotspotConfigs[String(figureId)]) {
+    setTimeout(() => {
+      injectHotspots(figureId);
+    }, 50);
+  }
 }
 
 function closeModal() {
+  // Clean up hotspots
+  removeHotspots();
+  document.removeEventListener('click', handleOutsideClick);
+  
   modal.classList.remove('fade-in');
   modal.classList.add('fade-out');
   
@@ -468,3 +508,248 @@ grid.addEventListener('click', function (e) {
   e.preventDefault();
   openModal(card);
 });
+
+// =========================
+// Interactive Hotspot System
+// =========================
+
+let activeHotspot = null;
+
+const hotspotConfigs = {
+  '1': {
+    overlays: [
+      { className: 'bargraph-errorbar-highlight', key: 'errorbar-first' }
+    ],
+    hotspots: [
+      {
+        className: 'bargraph-errorbar-hotspot',
+        key: 'errorbar-first',
+        title: 'Error Bar',
+        text: 'a line on a graph that shows how much the measured value might vary.'
+      }
+    ]
+  },
+  '3': {
+    overlays: [
+      { className: 'scatter-bestfit-highlight', key: 'line-best-fit' }
+    ],
+    hotspots: [
+      {
+        className: 'scatter-bestfit-hotspot',
+        key: 'line-best-fit',
+        title: 'Line of Best Fit',
+        text: 'a straight line drawn on a graph that shows the overall trend or relationship between the data points.'
+      }
+    ]
+  },
+  '5': {
+    overlays: [
+      { className: 'clade-highlight', key: 'clade' },
+      { className: 'outgroup-highlight', key: 'outgroup' }
+    ],
+    hotspots: [
+      {
+        className: 'clade-hotspot',
+        key: 'clade',
+        title: 'Clade',
+        text: 'A clade is a group of organisms that includes a common ancestor and all of its descendants.'
+      },
+      {
+        className: 'outgroup-hotspot',
+        key: 'outgroup',
+        title: 'Outgroup',
+        text: 'An outgroup is a lineage outside the focal group used as a reference for comparison.'
+      }
+    ]
+  },
+  '7': {
+    overlays: [
+      { className: 'myosin-head-highlight', key: 'myosin-head' },
+      { className: 'actin-highlight', key: 'actin' },
+      { className: 'myosin-highlight', key: 'myosin' }
+    ],
+    hotspots: [
+      {
+        key: 'myosin-head',
+        title: 'Myosin Head',
+        text: 'The myosin head binds to actin and generates force during the power stroke.',
+        top: '7%',
+        left: '40%'
+      },
+      {
+        key: 'actin',
+        title: 'Actin',
+        text: 'Actin is the thin filament that myosin binds and pulls to produce contraction.',
+        top: '1.5%',
+        left: '67%'
+      },
+      {
+        key: 'myosin',
+        title: 'Myosin',
+        text: 'Myosin is the motor protein on the thick filament that converts ATP energy into movement.',
+        top: '14%',
+        left: '67%'
+      }
+    ]
+  },
+  '10': {
+    overlays: [
+      { className: 'calcium-pink-arrow-highlight', key: 'pink-arrow' },
+      { className: 'calcium-black-arrow-highlight', key: 'black-arrow' }
+    ],
+    hotspots: [
+      {
+        className: 'calcium-pink-arrow-hotspot',
+        key: 'pink-arrow',
+        title: 'Pink Arrow',
+        text: 'This arrow marks a regulatory signal that triggers the body to correct a calcium imbalance.'
+      },
+      {
+        className: 'calcium-black-arrow-hotspot',
+        key: 'black-arrow',
+        title: 'Black Arrow',
+        text: 'This arrow traces the step-by-step cause-and-effect flow through the pathway.'
+      }
+    ]
+  }
+};
+
+function createHotspotHTML(figureId) {
+  const config = hotspotConfigs[String(figureId)];
+  if (!config) return '';
+
+  const overlaysHTML = config.overlays
+    .map(overlay => `<div class="highlight-overlay ${overlay.className}" data-highlight="${overlay.key}"></div>`)
+    .join('');
+
+  const hotspotsHTML = config.hotspots
+    .map(hotspot => {
+      const className = hotspot.className ? ` ${hotspot.className}` : '';
+      const positionStyle = hotspot.top && hotspot.left ? ` style="top:${hotspot.top}; left:${hotspot.left};"` : '';
+      return `
+        <div class="hotspot${className}" data-hotspot="${hotspot.key}"${positionStyle}>
+          <button class="hotspot-dot" aria-label="${hotspot.title} information"></button>
+          <div class="hotspot-info">
+            <strong>${hotspot.title}</strong>
+            <p>${hotspot.text}</p>
+          </div>
+        </div>
+      `;
+    })
+    .join('');
+
+  return `${overlaysHTML}${hotspotsHTML}`;
+}
+
+function injectHotspots(figureId) {
+  if (!hotspotConfigs[String(figureId)]) return;
+
+  // Check if hotspots already exist
+  const existingContainer = modalImage.parentElement.querySelector('.figure-container');
+  if (existingContainer) {
+    return; // Hotspots already injected
+  }
+
+  // Wrap the image in a figure-container
+  const container = document.createElement('div');
+  container.className = 'figure-container';
+  
+  // Insert hotspot HTML
+  container.innerHTML = createHotspotHTML(figureId);
+  
+  // Move the image into the container
+  modalImage.parentElement.insertBefore(container, modalImage);
+  container.insertBefore(modalImage, container.firstChild);
+  
+  // Setup event listeners
+  setupHotspotListeners(container);
+}
+
+function removeHotspots() {
+  const container = document.querySelector('.figure-modal-imagebox .figure-container');
+  if (!container) return;
+  
+  // Move image back out
+  const parent = container.parentElement;
+  parent.insertBefore(modalImage, container);
+  
+  // Remove container
+  container.remove();
+  
+  activeHotspot = null;
+}
+
+function setupHotspotListeners(container) {
+  const hotspots = container.querySelectorAll('.hotspot');
+  const highlights = container.querySelectorAll('.highlight-overlay');
+  
+  hotspots.forEach(hotspot => {
+    const button = hotspot.querySelector('.hotspot-dot');
+    const hotspotType = hotspot.getAttribute('data-hotspot');
+    
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      
+      // Toggle this hotspot
+      if (activeHotspot === hotspot) {
+        deactivateHotspot(hotspot);
+        deactivateHighlight(hotspotType, highlights);
+        activeHotspot = null;
+      } else {
+        // Deactivate previous hotspot
+        if (activeHotspot) {
+          const prevType = activeHotspot.getAttribute('data-hotspot');
+          deactivateHotspot(activeHotspot);
+          deactivateHighlight(prevType, highlights);
+        }
+        
+        // Activate new hotspot
+        activateHotspot(hotspot);
+        activateHighlight(hotspotType, highlights);
+        activeHotspot = hotspot;
+      }
+    });
+  });
+  
+  // Close hotspots when clicking outside
+  document.addEventListener('click', handleOutsideClick);
+}
+
+function handleOutsideClick(e) {
+  if (!activeHotspot) return;
+  
+  // Don't close if clicking inside a hotspot
+  if (e.target.closest('.hotspot')) return;
+  
+  const hotspotType = activeHotspot.getAttribute('data-hotspot');
+  const container = document.querySelector('.figure-modal-imagebox .figure-container');
+  const highlights = container ? container.querySelectorAll('.highlight-overlay') : [];
+  
+  deactivateHotspot(activeHotspot);
+  deactivateHighlight(hotspotType, highlights);
+  activeHotspot = null;
+}
+
+function activateHotspot(hotspot) {
+  hotspot.classList.add('active');
+}
+
+function deactivateHotspot(hotspot) {
+  hotspot.classList.remove('active');
+}
+
+function activateHighlight(type, highlights) {
+  highlights.forEach(highlight => {
+    if (highlight.getAttribute('data-highlight') === type) {
+      highlight.classList.add('active');
+    }
+  });
+}
+
+function deactivateHighlight(type, highlights) {
+  highlights.forEach(highlight => {
+    if (highlight.getAttribute('data-highlight') === type) {
+      highlight.classList.remove('active');
+    }
+  });
+}
