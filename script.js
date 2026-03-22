@@ -64,7 +64,31 @@ const figures = [
     }
   },
   {id:4, title:'Histogram', href:'#', thumbnail:'assets/petal_length_histogram.png', image:'assets/petal_length_histogram.png', caption:'Distribution of petal length. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Genetics, Physiology', tags:['Histogram','Graph','Explanatory','Ecology','Genetics','Physiology']},
-  {id:11, title:'Heat Map', href:'#', thumbnail:'assets/heatmap.png', image:'assets/heatmap.png', caption:' Heat map showing average monthly rainfall (mm) across different habitats, where darker colors represent higher rainfall and lighter colors represent lower rainfall. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Physiology, Genetics', tags:['Heat Map','Graph','Explanatory','Ecology','Physiology','Genetics']},
+  {
+    id:11,
+    title:'Heat Map',
+    href:'#',
+    thumbnail:'assets/heatmap.png',
+    image:'assets/heatmap.png',
+    caption:' Heat map showing average monthly rainfall (mm) across different habitats, where darker colors represent higher rainfall and lighter colors represent lower rainfall. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>',
+    figureType:'Graph',
+    functionPurpose:'Explanatory',
+    topic:'Ecology, Physiology, Genetics',
+    tags:['Heat Map','Graph','Explanatory','Ecology','Physiology','Genetics'],
+    modalContent:{
+      whatIsThis:'This is an intensity heatmap representing the amount of rainfall (mm) across the months in different ecosystem types. Heat maps display data in a two-dimensional matrix, where each cell represents a piece of data and the colour indicates its value. Heat maps are useful for quickly identifying patterns and hot spots (areas of intensity).',
+      howToUnderstand:[
+        'Step 1 - The data on the x and y axes of heat maps are typically categorical, while the colour of the cells is typically quantitative. Here, the x-axis represents the months of the year from January to December, whereas the y-axis represents the various ecosystem types.',
+        'Step 2 - Note that the colour gradient outside the heat map specifies the relationship between colour and the variable being displayed. In this figure, all possible values range from 0mm to 160mm. Higher values are represented by darker colours while lower values are represented by lighter colours.',
+        'Step 3 - To analyze any specific cell, choose specific categorical values on both the x-axis and y-axis. For example, if I wanted to analyze the darkest cell, I would look at cells in the August column and observe each cell until I get to the row identifying rainforests. Then, I would compare the colour of the cell to the colour gradient and estimate its value. In this example, I would say that rainforests in the month of August receive about 160mm of rainfall.',
+        'Step 4 - To identify patterns or trends, look for areas that show darker colours clustered together in either rows or columns. For example, on the x-axis, June to August shows the heaviest rainfall because they have more darker coloured cells than the other months. Similarly, on the y-axis, rainforests receive the most amount of rainfall since they have more darker coloured cells than the other ecosystem types. Comparatively, deserts receive the least amount of rainfall because they have the lightest coloured cells in each month across the ecosystem types.'
+      ],
+      quickFacts:[
+        'The x and y axes in heatmaps are typically categorical values.',
+        'Darker shades of a colour indicate higher values, while lighter shades indicate lower values.'
+      ]
+    }
+  },
   {id:12, title:'Box and Whisker Plot', href:'#', thumbnail:'assets/boxplot.png', image:'assets/boxplot.png', caption:'Box-and-whisker plot showing plant height (cm) under different light conditions. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Physiology, Genetics', tags:['Box Plot','Graph','Explanatory','Ecology','Physiology','Genetics']},
   {
     id:5,
