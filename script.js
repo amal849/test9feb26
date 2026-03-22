@@ -35,7 +35,34 @@ const figures = [
     }
   },
   {id:2, title:'Line Graph', href:'#', thumbnail:'assets/heart_rate_linegraph.png', image:'assets/heart_rate_linegraph.png', caption:'Bone density across age. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Physiology, Ecology', tags:['Line Graph','Graph','Explanatory','Physiology','Ecology']},
-  {id:3, title:'Scatter Plot', href:'#', thumbnail:'assets/sleepduration_screentime_scatterplot.png', image:'assets/sleepduration_screentime_scatterplot.png', caption:'Sleep duration versus daily screen time. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Genetics, Physiology', tags:['Scatter Plot','Graph','Explanatory','Ecology','Genetics','Physiology']},
+  {
+    id:3,
+    title:'Scatter Plot',
+    href:'#',
+    thumbnail:'assets/sleepduration_screentime_scatterplot.png',
+    image:'assets/sleepduration_screentime_scatterplot.png',
+    caption:'Sleep duration versus daily screen time. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>',
+    figureType:'Graph',
+    functionPurpose:'Explanatory',
+    topic:'Ecology, Genetics, Physiology',
+    tags:['Scatter Plot','Graph','Explanatory','Ecology','Genetics','Physiology'],
+    modalContent:{
+      whatIsThis:'This is a scatterplot illustrating the relationship between screen time (hours per day) and sleep duration (hours per night). Scatterplots are useful for inferring the relationship between two datasets and identifying trends. Unsurprisingly, they are some of the most commonly used plots in biological data science.',
+      howToUnderstand:[
+        'Step 1 - Scatterplots are used to display the relationship between two variables. Here, the variables are screen time in hours per day (x-axis) and sleep duration in hours per night (y-axis).',
+        'Step 2 - Also, scatterplots represent a quantitative measurement of the same piece of data, as defined by the x and y axes. In this figure, each dot is symbolic of two measurements taken from an individual.',
+        'Step 3 - In this plot, there are two key elements: the line of best fit and the outliers. The line of best fit summarizes the overall trend in a scatterplot. Here, the line of best fit is drawn as a negative slope, indicating a negative correlation, to describe the trend of reduced sleep duration with increasing screen time. Also, note how most of the data points are clustered together to form a line? This means that there is a strong correlation between the two variables.',
+        'Step 4 - Next, look at the outliers. When dots are placed significantly far from the line of best fit, they represent extreme values. In this plot, there are two outliers: one on the y-axis and one on the far left of the plot. For example, the latter outlier is a measurement of a person whose screentime is around 7.5 hours per day and who sleeps about 9 hours per day.'
+      ],
+      quickFacts:[
+        'Data points that deviate significantly from the line of best fit represent extreme values or outliers.',
+        'Data points that are clustered closer together to form a line indicate a stronger correlation between the two variables.'
+      ],
+      misconceptionTitle:'"Correlation equals causation."',
+      misconceptionWrongHtml:'',
+      misconceptionDetail:'Although the scatterplot in this example shows a strong negative correlation between screen time and sleep duration, it does not mean that one causes the other. There may be other confounding variables influencing one\'s sleep duration and screen time. For example, in this scatterplot, a person who has no screen time (outlier on the y-axis) sleeps about the same as someone who has around 6 hours of screen time.'
+    }
+  },
   {id:4, title:'Histogram', href:'#', thumbnail:'assets/petal_length_histogram.png', image:'assets/petal_length_histogram.png', caption:'Distribution of petal length. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Genetics, Physiology', tags:['Histogram','Graph','Explanatory','Ecology','Genetics','Physiology']},
   {id:11, title:'Heat Map', href:'#', thumbnail:'assets/heatmap.png', image:'assets/heatmap.png', caption:' Heat map showing average monthly rainfall (mm) across different habitats, where darker colors represent higher rainfall and lighter colors represent lower rainfall. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Physiology, Genetics', tags:['Heat Map','Graph','Explanatory','Ecology','Physiology','Genetics']},
   {id:12, title:'Box and Whisker Plot', href:'#', thumbnail:'assets/boxplot.png', image:'assets/boxplot.png', caption:'Box plot. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Physiology, Genetics', tags:['Box Plot','Graph','Explanatory','Ecology','Physiology','Genetics']},
