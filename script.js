@@ -34,7 +34,34 @@ const figures = [
       misconceptionDetail:'Different error bars show different types of variability in the data. Common examples include standard deviation error bars, standard error (SE) error bars, and 95% confidence interval error bars. Because these error bars can look similar, it is important to identify which type is being used.'
     }
   },
-  {id:2, title:'Line Graph', href:'#', thumbnail:'assets/heart_rate_linegraph.png', image:'assets/heart_rate_linegraph.png', caption:'Bone density across age. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Physiology, Ecology', tags:['Line Graph','Graph','Explanatory','Physiology','Ecology']},
+  {
+    id:2,
+    title:'Line Graph',
+    href:'#',
+    thumbnail:'assets/heart_rate_linegraph.png',
+    image:'assets/heart_rate_linegraph.png',
+    caption:'Bone density across age. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>',
+    figureType:'Graph',
+    functionPurpose:'Explanatory',
+    topic:'Physiology, Ecology',
+    tags:['Line Graph','Graph','Explanatory','Physiology','Ecology'],
+    modalContent:{
+      whatIsThis:'This is a line graph describing the relationship between age (years) and bone density (g/cm²) for both males and females. Line graphs display continuous data and are often used to visualize changes in a quantitative variable through time.',
+      howToUnderstand:[
+        'Step 1 - Line graphs typically plot the time variable on the x-axis and a dependent quantitative variable on the y-axis. Here, the age, in years, quantifies the x-axis, whereas bone density, in grams per centimeter squared, quantifies the y-axis. Note that the x-axis may not always be time, but it is typically in the interval scale (usually ratio).',
+        'Step 2 - Notice how there are two lines describing how bone density changes over time for males (in blue) and females (in red) as described by the legend. When there are multiple lines in a single graph, it is important to compare them and look for any patterns or trends. In this graph, note how bone density changes over time for males and females as well as how it changes over time in each sex.',
+        'Step 3 - Next, observe the slopes of each line individually. For males, bone density increases sharply, reaching a peak at 1.3 g/cm² and then steadily decreasing after. For females, bone density also increases sharply, reaching a peak at 1.1 g/cm² and decreasing steadily after.',
+        'Step 4 - Finally, analyze the similarities and differences between both lines, such as the shapes of the lines. For both sexes, the lines first increase sharply, hit peak bone density at around age 25, and then begin to decrease more steadily. However, bone density growth for both sexes diverges around age 15, where males reach a higher peak bone density than females. Also, note how the blue has a more negative slope than the red line between ages 40 to 70, indicating that men have a sharper decrease in bone density than women.'
+      ],
+      quickFacts:[
+        'Line graphs typically show how a quantitative variable (y-axis) changes through time (x-axis).',
+        'Line graphs show similarities and differences between two or more lines through continuous data.'
+      ],
+      misconceptionTitle:'"Lines connecting data points are actual measured data."',
+      misconceptionWrongHtml:'',
+      misconceptionDetail:'Line graphs show trends through continuous data; hence, the data points are connected through lines. Values between data points do not represent actual measured data.'
+    }
+  },
   {
     id:3,
     title:'Scatter Plot',
@@ -63,7 +90,34 @@ const figures = [
       misconceptionDetail:'Although the scatterplot in this example shows a strong negative correlation between screen time and sleep duration, it does not mean that one causes the other. There may be other confounding variables influencing one\'s sleep duration and screen time. For example, in this scatterplot, a person who has no screen time (outlier on the y-axis) sleeps about the same as someone who has around 6 hours of screen time.'
     }
   },
-  {id:4, title:'Histogram', href:'#', thumbnail:'assets/petal_length_histogram.png', image:'assets/petal_length_histogram.png', caption:'Distribution of petal length. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Genetics, Physiology', tags:['Histogram','Graph','Explanatory','Ecology','Genetics','Physiology']},
+  {
+    id:4,
+    title:'Histogram',
+    href:'#',
+    thumbnail:'assets/petal_length_histogram.png',
+    image:'assets/petal_length_histogram.png',
+    caption:'Distribution of petal length. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>',
+    figureType:'Graph',
+    functionPurpose:'Explanatory',
+    topic:'Ecology, Genetics, Physiology',
+    tags:['Histogram','Graph','Explanatory','Ecology','Genetics','Physiology'],
+    modalContent:{
+      whatIsThis:'This is a histogram showing the frequency distribution of different petal lengths (cm). Histograms display frequency distributions of data from one or more variables using adjacent vertical bars. They are useful for displaying the shape of continuous data and are often used in data exploration to determine if the data are normally distributed.',
+      howToUnderstand:[
+        'Step 1 - Histograms typically plot discrete intervals on the x-axis while count data for each interval are displayed on the y-axis. In this figure, the x-axis represents petal length in centimeters, and the y-axis represents frequency in counts.',
+        'Step 2 - Observe the spread of the data and where the center occurs. Here, the data ranges from 0 cm to 7 cm with values that are more frequent clustering in the middle and the values that are less frequent occurring at the tails of the distribution. Also, note that the center occurs in the interval of 3 cm to 4 cm because the mean, median, and mode all lie in the middle of the data, generally.',
+        'Step 3 - Determine if the data is normal, right-skewed, left-skewed, unimodal, or bimodal. In this histogram, the data is almost normally distributed because of the symmetric bell-shaped curve.',
+        'Step 4 - Identify any outliers in the dataset. Note that outliers are important because they can change the center of the data. In our example, there are no outliers that deviate significantly from data in the dataset.'
+      ],
+      quickFacts:[
+        'Histograms display frequency distributions of one or more variables.',
+        'Histograms show continuous data hence why the bars touch each other.'
+      ],
+      misconceptionTitle:'',
+      misconceptionWrongHtml:'',
+      misconceptionDetail:''
+    }
+  },
   {
     id:11,
     title:'Heat Map',
@@ -89,7 +143,35 @@ const figures = [
       ]
     }
   },
-  {id:12, title:'Box and Whisker Plot', href:'#', thumbnail:'assets/boxplot.png', image:'assets/boxplot.png', caption:'Box-and-whisker plot showing plant height (cm) under different light conditions. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>', figureType:'Graph', functionPurpose:'Explanatory', topic:'Ecology, Physiology, Genetics', tags:['Box Plot','Graph','Explanatory','Ecology','Physiology','Genetics']},
+  {
+    id:12,
+    title:'Box and Whisker Plot',
+    href:'#',
+    thumbnail:'assets/boxplot.png',
+    image:'assets/boxplot.png',
+    caption:'Box-and-whisker plot showing plant height (cm) under different light conditions. Created by Amal Shahzad, 2026. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. <em>Data shown are simulated for educational purposes.</em>',
+    figureType:'Graph',
+    functionPurpose:'Explanatory',
+    topic:'Ecology, Physiology, Genetics',
+    tags:['Box Plot','Graph','Explanatory','Ecology','Physiology','Genetics'],
+    modalContent:{
+      whatIsThis:'This is a box and whisker plot showing plant height under different light conditions for four datasets. Box and whisker plots are useful for summarizing datasets to show the spread of data, median values, variance, skewness, and outliers.',
+      howToUnderstand:[
+        'Step 1 - Box and whisker plots display categorical data on the x-axis with quantitative dependent variables on the y-axis. In this plot, the different categories of light conditions represent the x-axis, while plant height in centimeters represents the y-axis.',
+        'Step 2 - Identify the four main characteristics of boxplots: the boxes display the interquartile range, the median is represented by a horizontal line, the whiskers define the complete range, and the outliers are shown as dots.',
+        'Step 3 - Next, determine what the lengths of the interquartile range and whiskers represent. Note that longer interquartile ranges and whiskers mean that there is more variability in the data...',
+        'Step 4 - Then, infer the skewness of the data from observing where the median lies within the interquartile range and comparing the lengths of the upper and lower whiskers...',
+        'Step 5 - Compare boxplots with other boxplots. Note any overlap between datasets...'
+      ],
+      quickFacts:[
+        'Boxes represent the interquartile range, which is the middle 50% of the data.',
+        'Upper and lower whiskers represent the top and bottom 25% of data respectively (or the data outside of the middle 50%).'
+      ],
+      misconceptionTitle:'',
+      misconceptionWrongHtml:'',
+      misconceptionDetail:''
+    }
+  },
   {
     id:5,
     title:'Phylogenetic Tree',
