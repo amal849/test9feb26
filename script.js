@@ -48,13 +48,13 @@ const figures = [
     modalContent:{
       whatIsThis:'This is a line graph describing the relationship between age (years) and bone density (g/cm²) for both males and females. Line graphs display continuous data and are often used to visualize changes in a quantitative variable through time.',
       howToUnderstand:[
-        'Step 1 - Line graphs typically plot the time variable on the x-axis and a dependent quantitative variable on the y-axis. Here, the age, in years, quantifies the x-axis, whereas bone density, in grams per centimeter squared, quantifies the y-axis. Note that the x-axis may not always be time, but it is typically in the interval scale (usually ratio).',
+        'Step 1 - Line graphs typically plot the time variable on the x-axis and a dependent quantitative variable on the y-axis. Here, the age, in years, is shown on the x-axis, whereas bone density, in grams per centimeter squared, is shown on the y-axis. Note that both axes are on the interval scale.',
         'Step 2 - Notice how there are two lines describing how bone density changes over time for males (in blue) and females (in red) as described by the legend. When there are multiple lines in a single graph, it is important to compare them and look for any patterns or trends. In this graph, note how bone density changes over time for males and females as well as how it changes over time in each sex.',
         'Step 3 - Next, observe the slopes of each line individually. For males, bone density increases sharply, reaching a peak at 1.3 g/cm² and then steadily decreasing after. For females, bone density also increases sharply, reaching a peak at 1.1 g/cm² and decreasing steadily after.',
         'Step 4 - Finally, analyze the similarities and differences between both lines, such as the shapes of the lines. For both sexes, the lines first increase sharply, hit peak bone density at around age 25, and then begin to decrease more steadily. However, bone density growth for both sexes diverges around age 15, where males reach a higher peak bone density than females. Also, note how the blue has a more negative slope than the red line between ages 40 to 70, indicating that men have a sharper decrease in bone density than women.'
       ],
       quickFacts:[
-        'Line graphs typically show how a quantitative variable (y-axis) changes through time (x-axis).',
+        'Line graphs typically show how two quantitative variables relate to each other.',
         'Line graphs show similarities and differences between two or more lines through continuous data.'
       ],
       misconceptionTitle:'"Lines connecting data points are actual measured data."',
@@ -74,11 +74,11 @@ const figures = [
     topic:'Ecology, Genetics, Physiology',
     tags:['Scatter Plot','Graph','Explanatory','Ecology','Genetics','Physiology'],
     modalContent:{
-      whatIsThis:'This is a scatterplot illustrating the relationship between screen time (hours per day) and sleep duration (hours per night). Scatterplots are useful for inferring the relationship between two datasets and identifying trends. Unsurprisingly, they are some of the most commonly used plots in biological data science.',
+      whatIsThis:'This is a scatterplot illustrating the relationship between screen time (hours per day) and sleep duration (hours per night). Scatterplots are useful for inferring the relationship between two variables and identifying trends. Unsurprisingly, they are some of the most commonly used plots in biological data science.',
       howToUnderstand:[
         'Step 1 - Scatterplots are used to display the relationship between two variables. Here, the variables are screen time in hours per day (x-axis) and sleep duration in hours per night (y-axis).',
-        'Step 2 - Also, scatterplots represent a quantitative measurement of the same piece of data, as defined by the x and y axes. In this figure, each dot is symbolic of two measurements taken from an individual.',
-        'Step 3 - In this plot, there are two key elements: the line of best fit and the outliers. The line of best fit summarizes the overall trend in a scatterplot. Here, the line of best fit is drawn as a negative slope, indicating a negative correlation, to describe the trend of reduced sleep duration with increasing screen time. Also, note how most of the data points are clustered together to form a line? This means that there is a strong correlation between the two variables.',
+        'Step 2 - Also, scatterplots represent a quantitative measurement of the same piece of data, as defined by the x and y axes. In this figure, each dot is symbolic of two measurements taken from one individual.',
+        'Step 3 - In this plot, there is only one key element: the line of best fit. The line of best fit summarizes the overall trend in a scatterplot. Here, the line of best fit is drawn as a negative slope, indicating a negative correlation, to describe the trend of reduced sleep duration with increasing screen time. Also, note how most of the data points are clustered together to form a line? This means that there is a strong correlation between the two variables.',
         'Step 4 - Next, look at the outliers. When dots are placed significantly far from the line of best fit, they represent extreme values. In this plot, there are two outliers: one on the y-axis and one on the far left of the plot. For example, the latter outlier is a measurement of a person whose screentime is around 7.5 hours per day and who sleeps about 9 hours per day.'
       ],
       quickFacts:[
@@ -87,7 +87,7 @@ const figures = [
       ],
       misconceptionTitle:'"Correlation equals causation."',
       misconceptionWrongHtml:'',
-      misconceptionDetail:'Although the scatterplot in this example shows a strong negative correlation between screen time and sleep duration, it does not mean that one causes the other. There may be other confounding variables influencing one\'s sleep duration and screen time. For example, in this scatterplot, a person who has no screen time (outlier on the y-axis) sleeps about the same as someone who has around 6 hours of screen time.'
+      misconceptionDetail:'Although the scatterplot in this example shows a strong negative correlation between screen time and sleep duration, it does not mean that one causes the other. There may be other confounding variables influencing one’s sleep duration and screen time. For example, in this scatterplot, a person who has no screen time (outlier on the y-axis) sleeps about the same as someone who has around 6 hours of screen time.'
     }
   },
   {
@@ -113,8 +113,8 @@ const figures = [
         'Histograms display frequency distributions of one or more variables.',
         'Histograms show continuous data hence why the bars touch each other.'
       ],
-      misconceptionTitle:'',
-      misconceptionWrongHtml:'',
+      misconceptionTitle:'"Each bar represents a different category."',
+      misconceptionWrongHtml:'Each bar in this histogram represents the frequency of petal length occurring between different intervals. It is easy to confuse histograms with bar charts, but remember that bar charts show categorical data on the x-axis, whereas histograms show quantitative data on the x-axis. Moreover, while a bar chart’s bars are separated by gaps, they touch in a histogram to show the continuity of data.',
       misconceptionDetail:''
     }
   },
@@ -140,7 +140,10 @@ const figures = [
       quickFacts:[
         'The x and y axes in heatmaps are typically categorical values.',
         'Darker shades of a colour indicate higher values, while lighter shades indicate lower values.'
-      ]
+      ],
+      misconceptionTitle:'"The point of heatmaps are to estimate values of individual cells."',
+      misconceptionWrongHtml:'The point of heatmaps is to read patterns rather than interpret values of individual cells. Patterns can be identified by the clustering of lighter or darker colour shades next to each other.',
+      misconceptionDetail:''
     }
   },
   {
@@ -819,10 +822,10 @@ const hotspotConfigs = {
       {
         className: 'boxplot-min-hotspot',
         key: 'boxplot-minimum',
-        title: 'Minimum',
+        title: 'Lower Whisker',
         top: '49%',
         left: '47%',
-        text: 'The minimum is the lowest value that is still considered part of the main dataset. It does not include outliers.'
+        text: 'The lower whisker extends downward from Q1 to the lowest data value within 1.5 × the interquartile range (IQR). Values farther below this limit are shown separately as outliers.'
       },
       {
         className: 'boxplot-q1-hotspot',
@@ -838,7 +841,7 @@ const hotspotConfigs = {
         title: 'Median',
         top: '26.5%',
         left: '52%',
-        text: 'The median is the middle value of the dataset. Half of the observations are above it and half are below it. It is shown as the horizontal line inside the box.'
+        text: 'The median is the middle value of the dataset. Half of the data falls above it, and half falls below it. It is shown as the horizontal line inside the box.'
       },
       {
         className: 'boxplot-q3-hotspot',
@@ -851,10 +854,10 @@ const hotspotConfigs = {
       {
         className: 'boxplot-max-hotspot',
         key: 'boxplot-maximum',
-        title: 'Maximum',
+        title: 'Upper Whisker',
         top: '5%',
         left: '47%',
-        text: 'The maximum is the highest value that is still considered part of the main dataset. It does not include outliers.'
+        text: 'The upper whisker extends upward from Q3 to the highest data value within 1.5 × the interquartile range (IQR). Values farther above this limit are shown separately as outliers.'
       },
       {
         className: 'boxplot-iqr-hotspot',
@@ -870,7 +873,7 @@ const hotspotConfigs = {
         title: 'Outlier',
         top: '74.1%',
         left: '45.5%',
-        text: 'Outliers are values that fall much higher or lower than the rest of the data. They appear as individual points outside the whiskers and may represent unusual observations or variation.'
+        text: 'Outliers are individual data points that fall more than 1.5 × the interquartile range (IQR) above Q3 or below Q1, so they appear outside the whiskers as separate points.'
       }
     ]
   }
